@@ -157,7 +157,7 @@ if ($user_id > 0 && isset($conn)) {
                 </div>
                 <h3 class="text-lg font-bold font-serif mb-2">Đội Ngũ Bếp Trưởng</h3>
                 <p class="text-xs text-slate-500 leading-relaxed">
-                    Được dẫn dắt bởi những đầu bếp giàu kinh nghiệm, mang đến hương vị chuẩn mực và sự đổi mới sáng tạo không ngừng trong từng thực đơn.
+                    Được dẫn dắt bởi những đầu bếp giàu kinh nghiệm, mang đến hương vị thơm ngon và sự đổi mới sáng tạo không ngừng trong từng món ăn.
                 </p>
             </div>
 
