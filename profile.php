@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id'])) {
 $canteenSettings = getCanteenSettings($conn);
 
 
-// Fetch fresh user data from DB
+// lấy dữ liệu ng dùng từ database
 $userId = $_SESSION['user_id'];
 $stmt = $conn->prepare("SELECT full_name, email, role, created_at FROM accounts WHERE id = ?");
 $stmt->bind_param("i", $userId);
