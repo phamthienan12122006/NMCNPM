@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
+// Nhập file cấu hình
 require_once __DIR__ . '/src/includes/config.php';
 
 $response = ['success' => false, 'data' => null];
