@@ -3,7 +3,7 @@ session_start();
 require_once __DIR__ . '/src/includes/config.php';
 require_once __DIR__ . '/src/includes/cart_order_helpers.php';
 
-// Check access
+// kiểm tra đăng nhập
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
