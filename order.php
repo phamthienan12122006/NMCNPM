@@ -28,7 +28,7 @@ syncSessionCartFromDb($conn, (int) $user_id);
 
 
 
-// Lấy gợi ý món ăn (Lưu vào session để không đổi mỗi khi reload)
+// Lấy gợi ý món ăn
 if (!isset($_SESSION['cart_suggestions']) || empty($_SESSION['cart_suggestions'])) {
     $suggestions = [];
     if (isset($conn)) {
