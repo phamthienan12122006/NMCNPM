@@ -5,7 +5,7 @@ session_start();
 require_once __DIR__ . '/src/includes/config.php';
 require_once __DIR__ . '/src/includes/cart_order_helpers.php';
 
-// Bắt tham số mã bàn nếu quét QR (vd: order.php?table=05)
+// Bắt tham số mã bàn nếu quét QR 
 if (isset($_GET['table']) && trim($_GET['table']) !== '') {
     $tNum = trim($_GET['table']);
     $_SESSION['table_number'] = str_starts_with(mb_strtolower($tNum), 'bàn') ? $tNum : ('Bàn ' . $tNum);
