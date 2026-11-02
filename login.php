@@ -12,7 +12,7 @@ $redirect = trim($_GET['redirect'] ?? ($_POST['redirect'] ?? 'dashboard.php'));
 if (!in_array($redirect, ['dashboard.php', 'order.php', 'menu.php', 'my_orders.php', 'favorites.php', 'profile.php'])) {
     $redirect = 'dashboard.php';
 }
-///
+////
 if (isset($_SESSION['user_id']) && ($_SESSION['role'] ?? '') !== 'guest') {
     header("Location: " . $redirect);
     exit();
