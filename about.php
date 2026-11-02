@@ -88,7 +88,7 @@ if ($user_id > 0 && isset($conn)) {
                         <span id="cart-count-badge" class="absolute -top-1 -right-1 bg-white text-[#ea580c] text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full shadow-sm border border-orange-200"><?php echo $cart_count; ?></span>
                     </a>
 
-                    <!-- Nút Giới Thiệu (Icon nhỏ góc riêng, đang active) -->
+                    <!--  Giới Thiệu-->
                     <a href="about.php" class="w-8 h-8 rounded-full bg-orange-600 text-white shadow-md shadow-orange-600/30 border border-orange-500 flex items-center justify-center transition-all ml-1 flex-shrink-0" title="Giới thiệu nhà hàng & Không gian">
                         <i data-lucide="info" class="w-4 h-4"></i>
                     </a>
