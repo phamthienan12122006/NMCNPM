@@ -8,7 +8,7 @@ $full_name = $_SESSION['full_name'] ?? '';
 $canteenSettings = getCanteenSettings($conn);
 $cName = $canteenSettings['canteen_name'] ?? 'Nhà Hàng Gourmet';
 
-// Giỏ hàng
+// Giỏ hàng //
 if ($user_id > 0 && isset($conn)) {
     $cart_count = getCartCountFromDb($conn, $user_id);
 } else {
