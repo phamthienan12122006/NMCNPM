@@ -9,7 +9,7 @@ if (isset($_GET['table']) && trim($_GET['table']) !== '') {
     $_SESSION['table_number'] = str_starts_with(mb_strtolower($tNum), 'bàn') ? $tNum : ('Bàn ' . $tNum);
     $_SESSION['order_type'] = 'dine_in';
 }
-///////////////
+////////////////
 $user_id = (int) ($_SESSION['user_id'] ?? 0);
 if ($user_id <= 0 && isset($conn)) {
     $user_id = ensureSessionUser($conn);
