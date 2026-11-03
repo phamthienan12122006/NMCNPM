@@ -28,8 +28,8 @@ Qua trang quản trị, nhà hàng có thể cập nhật thực đơn, tiếp n
 
 | STT | Họ và tên | Mã sinh viên | Lớp |
 |:---:|---|:---:|:---:|
-| 1 | Phạm Thiên Ân (Nhóm trưởng) | 50.01.104.003 | 50.01.CNTT.C |
-| 2 | Lý Ngọc Mỹ | 50.01.104.092 | 50.01.CNTT.C |
+| 1 | Phạm Thiên Ân | 50.01.104.003 | 50.01.CNTT.C |
+| 2 | Lý Ngọc My | 50.01.104.092 | 50.01.CNTT.C |
 | 3 | Nguyễn Khánh Ngọc | 50.01.104.101 | 50.01.CNTT.D |
 | 4 | Phạm Yến Nhi | 50.01.104.111 | 50.01.CNTT.C |
 | 5 | Nguyễn Thị Thanh Xuân | 50.01.104.185 | 50.01.CNTT.C |
