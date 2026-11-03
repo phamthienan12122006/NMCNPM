@@ -24,7 +24,7 @@ Qua trang quản trị, nhà hàng có thể cập nhật thực đơn, tiếp n
 
 ## 2. Thông tin nhóm thực hiện
 
-**Giảng viên hướng dẫn** · ThS. Lê Thanh Thoại
+**Giảng viên hướng dẫn** : ThS. Lê Thanh Thoại
 
 | STT | Họ và tên | Mã sinh viên | Lớp |
 |:---:|---|:---:|:---:|
@@ -97,7 +97,7 @@ NMCNPM/
 
 ## 7. Hướng dẫn chạy website trên Windows
 
-Hướng dẫn này dành cho người lần đầu tải dự án về máy. Bạn chỉ cần trình duyệt, XAMPP và mã nguồn tải từ GitHub. Bản dự án đã có sẵn PHP cho Windows 64-bit và các thư viện cần thiết.
+Hướng dẫn này dành cho người lần đầu tải dự án về máy. Chỉ cần trình duyệt, XAMPP và mã nguồn tải từ GitHub. Bản dự án đã có sẵn PHP cho Windows 64-bit và các thư viện cần thiết.
 
 **Lần đầu sử dụng**, thực hiện từ bước 1 đến bước 6. **Từ lần thứ hai**, làm theo mục **Mở lại website sau khi tắt máy** ở cuối phần này.
 
@@ -115,7 +115,7 @@ Hướng dẫn này dành cho người lần đầu tải dự án về máy. B�
    - Thư mục `php-8.5.1-nts-Win32-vs17-x64`
    - Thư mục `vendor`
 
-**Hãy giữ cửa sổ thư mục này đang mở.** Từ đây, cụm từ **thư mục dự án** chỉ thư mục đang chứa `start_server.bat`. Bạn có thể để dự án ngay trong Downloads.
+**Hãy giữ cửa sổ thư mục này đang mở.** Từ đây, cụm từ **thư mục dự án** chỉ thư mục đang chứa `start_server.bat`. Có thể để dự án ngay trong Downloads.
 
 ### Bước 2. Cài XAMPP và bật cơ sở dữ liệu
 
@@ -128,7 +128,7 @@ Nếu máy đã có **XAMPP**, bắt đầu từ mục 4 bên dưới.
 5. Trong bảng điều khiển, tìm dòng **Apache** → bấm **Start**. Tiếp theo, tìm dòng **MySQL** → bấm **Start**.
 6. Khi cả hai dòng chuyển sang màu xanh và nút bên cạnh đổi thành **Stop**, mở trình duyệt và truy cập [phpMyAdmin](http://localhost/phpmyadmin/).
 
-**Bạn đã làm đúng khi** trình duyệt hiện trang phpMyAdmin với danh sách cơ sở dữ liệu ở bên trái. Đây là nơi chuẩn bị dữ liệu. Website nhà hàng sẽ được mở riêng ở bước 6.
+**Đã làm đúng khi** trình duyệt hiện trang phpMyAdmin với danh sách cơ sở dữ liệu ở bên trái. Đây là nơi chuẩn bị dữ liệu. Website nhà hàng sẽ được mở riêng ở bước 6.
 
 ### Bước 3. Tạo cơ sở dữ liệu và nhập các bảng của dự án
 
@@ -148,7 +148,7 @@ Nếu máy đã có **XAMPP**, bắt đầu từ mục 4 bên dưới.
 5. Cuộn xuống cuối trang phpMyAdmin rồi bấm **Import** hoặc **Go**.
 6. Sau khi nhập xong, bấm lại **gourmet_local** ở bên trái. Bạn sẽ thấy các bảng như `accounts`, `products`, `orders` và `order_items`.
 
-**Bạn đã làm đúng khi** thấy tên các bảng. File SQL tạo cấu trúc dữ liệu, vì vậy bảng `products` có thể đang trống.
+**Đã làm đúng khi** thấy tên các bảng. File SQL tạo cấu trúc dữ liệu, vì vậy bảng `products` có thể đang trống.
 
 ### Bước 4. Cấu hình để website kết nối đúng cơ sở dữ liệu
 
@@ -176,7 +176,7 @@ Nếu máy đã có **XAMPP**, bắt đầu từ mục 4 bên dưới.
    DB_PASS=
    ```
 
-   Nếu bạn đã đặt mật khẩu cho tài khoản MySQL `root`, hãy nhập mật khẩu đó ngay sau `DB_PASS=`. Nếu MySQL đang dùng cổng khác `3306`, điền cổng hiển thị ở dòng **MySQL** trong XAMPP.
+   Nếu đã đặt mật khẩu cho tài khoản MySQL `root`, hãy nhập mật khẩu đó ngay sau `DB_PASS=`. Nếu MySQL đang dùng cổng khác `3306`, điền cổng hiển thị ở dòng **MySQL** trong XAMPP.
 
 6. Nhấn **Ctrl + S** để lưu rồi đóng Notepad. Giữ cửa sổ PowerShell đang mở để làm bước tiếp theo.
 
@@ -202,7 +202,7 @@ Nếu máy đã có **XAMPP**, bắt đầu từ mục 4 bên dưới.
 
 ### Mở lại website sau khi tắt máy
 
-Bạn chỉ cần khởi động lại các chương trình đã cài:
+Chỉ cần khởi động lại các chương trình đã cài:
 
 1. Mở **XAMPP Control Panel** → bấm **Start** ở dòng **MySQL**. Nếu muốn mở cả phpMyAdmin để xem dữ liệu, bật thêm **Apache**.
 2. Mở **thư mục dự án** → nhấp đúp vào `start_server.bat` và giữ cửa sổ đó đang mở.
