@@ -4,7 +4,7 @@ session_start();
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
-}//
+}
 $full_name = $_SESSION['full_name'] ?? 'Người dùng';
 $role = $_SESSION['role'] ?? 'user';
 $user_id = (int)$_SESSION['user_id'];
