@@ -28,7 +28,7 @@ Qua trang quản trị, nhà hàng có thể cập nhật thực đơn, tiếp n
 
 | STT | Họ và tên | Mã sinh viên | Lớp |
 |:---:|---|:---:|:---:|
-| 1 | Phạm Thiên Ân | 50.01.104.003 | 50.01.CNTT.C |
+| 1 | Phạm Thiên Ân (Nhóm trưởng) | 50.01.104.003 | 50.01.CNTT.C |
 | 2 | Lý Ngọc My | 50.01.104.092 | 50.01.CNTT.C |
 | 3 | Nguyễn Khánh Ngọc | 50.01.104.101 | 50.01.CNTT.D |
 | 4 | Phạm Yến Nhi | 50.01.104.111 | 50.01.CNTT.C |
@@ -74,26 +74,51 @@ Khi khách gửi đơn, mã PHP trên máy chủ tiếp nhận thông tin giỏ 
 | Thanh toán trực tuyến | PayOS |
 | Quản lý thư viện PHP | Composer |
 
-## 6. Cấu trúc thư mục chính
+
+## 6. Cấu trúc thư mục dự án
 
 ```text
 NMCNPM/
-├── assets/                  # CSS, JavaScript và hình ảnh giao diện
+├── assets/                        # CSS, JavaScript và hình ảnh
 ├── database/
-│   └── database.sql         # Cấu trúc bảng và dữ liệu ban đầu
+│   └── database.sql               # Cấu trúc cơ sở dữ liệu
+├── demo/                          # Tài nguyên demo
+├── php-8.5.1-nts-Win32-vs17-x64/  # Bộ PHP chạy trên Windows
+├── scripts/                       # Các script hỗ trợ
 ├── src/
-│   ├── admin/               # Các trang quản trị nhà hàng
-│   ├── api/                 # Xử lý yêu cầu từ website và PayOS
-│   └── includes/            # Cấu hình và mã PHP dùng chung
-├── uploads/                 # Hình ảnh được tải lên
-├── menu.php                 # Thực đơn
-├── order.php                # Đặt món
-├── my_orders.php            # Theo dõi đơn hàng
-├── reservation.php          # Đặt bàn
-├── .env.example             # Mẫu cấu hình kết nối
-├── composer.json            # Danh sách thư viện PHP
-└── start_server.bat         # Khởi động website trên Windows
+│   ├── admin/                     # Giao diện và xử lý quản trị
+│   ├── api/                       # API và xử lý yêu cầu
+│   └── includes/                  # Cấu hình, hàm dùng chung
+├── uploads/                       # Hình ảnh tải lên
+├── vendor/                        # Thư viện PHP từ Composer
+│
+├── index.php                      # Trang chính
+├── about.php                      # Giới thiệu
+├── menu.php                       # Thực đơn
+├── order.php                      # Đặt món
+├── my_orders.php                  # Đơn hàng của tôi
+├── reservation.php                # Đặt bàn
+├── favorites.php                  # Món yêu thích
+├── profile.php                    # Hồ sơ cá nhân
+├── login.php                      # Đăng nhập
+├── register.php                   # Đăng ký
+├── forgot_password.php            # Khôi phục mật khẩu
+├── logout.php                     # Đăng xuất
+├── dashboard.php                  # Trang tổng quan
+├── payment_history.php            # Lịch sử thanh toán
+├── api_random.php                 # Tệp API hỗ trợ
+├── db_check.php                   # Kiểm tra cơ sở dữ liệu
+│
+├── .env.example                   # Mẫu cấu hình môi trường
+├── .gitignore                     # Danh sách file Git bỏ qua
+├── composer.json                  # Khai báo thư viện PHP
+├── composer.lock                  # Khóa phiên bản thư viện
+├── start_server.bat               # Khởi động máy chủ
+└── README.md                      # Tài liệu hướng dẫn
 ```
+
+**Lưu ý:** Cây trên mô tả những thành phần chính của dự án, không liệt kê toàn bộ tệp nằm sâu bên trong các thư mục.
+
 
 ## 7. Hướng dẫn chạy website trên Windows
 
