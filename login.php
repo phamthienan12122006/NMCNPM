@@ -188,13 +188,33 @@ $show_forgot = $_SESSION['login_attempts'] >= 3;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập - <?php echo htmlspecialchars($cName); ?></title>
     <link rel="icon" type="image/png" href="assets/img/hero/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Quicksand', 'sans-serif'],
+                    }
+                }
+            }
+        };
+    </script>
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="assets/js/auth-theme.js"></script>
 </head>
 
-<body class="min-h-screen w-full flex items-center justify-center p-2">
+<body class="min-h-screen w-full flex items-center justify-center p-2 transition-colors duration-300">
     <canvas id="waveCanvas" class="fixed inset-0 -z-10"></canvas>
+
+    <!-- Floating Theme Toggle Button -->
+    <button type="button" onclick="toggleAuthTheme()" class="fixed top-4 right-4 z-50 p-2.5 rounded-full bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-orange-100 dark:border-slate-700 text-gray-700 dark:text-amber-400 shadow-lg hover:scale-110 active:scale-95 transition-all" title="Chuyển đổi giao diện Sáng / Tối">
+        <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+        <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+    </button>
 
     <div class="fixed inset-0 pointer-events-none overflow-hidden -z-5">
         <div class="absolute text-6xl animate-float" style="top: 15%; right: 8%; animation-delay: 0s;">🍕</div>
@@ -220,67 +240,79 @@ $show_forgot = $_SESSION['login_attempts'] >= 3;
         <div class="glass-card rounded-2xl p-8 transition-all duration-500 hover:shadow-2xl">
             <div class="text-center mb-6 flex flex-col items-center">
                 <a href="dashboard.php"
-                    class="block w-24 h-24 bg-white p-1 rounded-full shadow-lg mb-4 flex items-center justify-center border-2 border-orange-100 hover:scale-105 active:scale-95 transition-all group">
+                    class="block w-24 h-24 bg-white dark:bg-slate-800 p-1 rounded-full shadow-lg mb-4 flex items-center justify-center border-2 border-orange-100 dark:border-slate-700 hover:scale-105 active:scale-95 transition-all group">
                     <img src="assets/img/hero/logo.png" alt="Logo"
                         class="w-full h-full object-contain rounded-full group-hover:rotate-12 transition-transform duration-300">
                 </a>
                 <h1 class="text-3xl font-bold text-gradient mb-2">Chào mừng trở lại</h1>
-                <p class="text-sm text-gray-600 font-light">Đăng nhập vào tài khoản của bạn</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400 font-light">Đăng nhập vào tài khoản của bạn</p>
             </div>
 
             <form id="loginForm" action="login.php" method="POST" class="space-y-4">
                 <input type="hidden" name="redirect" value="<?php echo htmlspecialchars($redirect); ?>">
+                
+                <?php if (!empty($error) && !isset($_POST['ajax'])): ?>
+                    <div class="p-3 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/50 flex items-center justify-between gap-2 text-xs text-red-600 dark:text-red-400">
+                        <span class="flex items-center gap-1.5 truncate">
+                            <i data-lucide="alert-circle" class="w-4 h-4 shrink-0"></i>
+                            <span class="truncate"><?php echo htmlspecialchars($error); ?></span>
+                        </span>
+                        <a href="forgot_password.php" class="shrink-0 font-bold underline hover:text-red-700 dark:hover:text-red-300 whitespace-nowrap">Lấy lại mật khẩu</a>
+                    </div>
+                <?php endif; ?>
+
                 <div class="space-y-1.5">
-                    <label for="email" class="text-xs font-semibold text-gray-700 uppercase tracking-wider">Email hoặc
-                        Username</label>
+                    <label for="email" class="text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Email hoặc Username</label>
                     <div class="relative">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400 dark:text-gray-500">
                             <i data-lucide="mail" class="w-4 h-4"></i>
                         </div>
                         <input type="text" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>"
-                            class="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-100 focus:border-orange-500 transition-all outline-none text-sm placeholder:text-gray-400 bg-white"
+                            class="block w-full pl-10 pr-3 py-2.5 border border-gray-300 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-orange-100 dark:focus:ring-amber-500/20 focus:border-orange-500 dark:focus:border-amber-400 transition-all outline-none text-sm placeholder:text-gray-400 dark:placeholder:text-gray-500 bg-white dark:bg-slate-800/90 text-gray-800 dark:text-gray-100"
                             placeholder="Email hoặc Tên đăng nhập" required autofocus>
                     </div>
                 </div>
 
                 <div class="space-y-1.5">
-                    <label for="password" class="text-xs font-semibold text-gray-700 uppercase tracking-wider">Mật
-                        khẩu</label>
+                    <div class="flex items-center justify-between">
+                        <label for="password" class="text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Mật khẩu</label>
+                        <a href="forgot_password.php" class="text-xs font-bold text-amber-600 hover:text-orange-500 dark:text-amber-400 dark:hover:text-amber-300 transition-colors focus:outline-none">Quên mật khẩu?</a>
+                    </div>
                     <div class="relative">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400 dark:text-gray-500">
                             <i data-lucide="lock" class="w-4 h-4"></i>
                         </div>
                         <input type="password" id="password" name="password"
-                            class="block w-full pl-10 pr-10 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-100 focus:border-orange-500 transition-all outline-none text-sm placeholder:text-gray-400 bg-white"
+                            class="block w-full pl-10 pr-10 py-2.5 border border-gray-300 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-orange-100 dark:focus:ring-amber-500/20 focus:border-orange-500 dark:focus:border-amber-400 transition-all outline-none text-sm placeholder:text-gray-400 dark:placeholder:text-gray-500 bg-white dark:bg-slate-800/90 text-gray-800 dark:text-gray-100"
                             placeholder="••••••••" required>
                         <button type="button" id="togglePassword"
-                            class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors">
+                            class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
                             <i data-lucide="eye" class="w-4 h-4"></i>
                         </button>
                     </div>
                 </div>
 
                 <button type="submit" id="submitBtn"
-                    class="w-full mt-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold rounded-xl hover:from-amber-600 hover:to-orange-600 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl active:scale-[0.98]">
+                    class="w-full mt-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold rounded-xl disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-orange-500/25 active:scale-[0.98]">
                     <span id="btnText">Đăng nhập</span>
                     <div id="btnLoader"
                         class="hidden w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
                 </button>
 
                 <div class="mt-4 text-center">
-                    <p class="text-sm text-gray-600">Chưa có tài khoản?
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Chưa có tài khoản?
                         <a href="register.php?redirect=<?php echo urlencode($redirect); ?>"
-                            class="font-bold text-orange-500 hover:text-orange-600 transition-colors">Đăng ký ngay</a>
+                            class="font-bold text-orange-500 hover:text-orange-600 dark:text-amber-400 dark:hover:text-amber-300 transition-colors">Đăng ký ngay</a>
                     </p>
                 </div>
             </form>
         </div>
         <div
-            class="absolute -inset-4 -z-10 bg-gradient-to-br from-orange-200/20 to-amber-200/10 rounded-2xl blur-2xl animate-pulse-slow">
+            class="absolute -inset-4 -z-10 bg-gradient-to-br from-orange-200/20 to-amber-200/10 dark:from-amber-500/10 dark:to-orange-500/5 rounded-2xl blur-2xl animate-pulse-slow">
         </div>
     </div>
     <div id="page-transition"
-        class="fixed inset-0 bg-white z-[9999] transition-opacity duration-500 pointer-events-none opacity-0"></div>
+        class="fixed inset-0 bg-white dark:bg-slate-900 z-[9999] transition-opacity duration-500 pointer-events-none opacity-0"></div>
     <script>
         lucide.createIcons();
         const toggleBtn = document.getElementById('togglePassword');

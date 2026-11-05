@@ -350,11 +350,18 @@ a {
 
 /* ADDED FOR NEW AUTH PAGES UI */
 .glass-card {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0 8px 32px 0 rgba(251, 146, 60, 0.1);
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 10px 35px 0 rgba(251, 146, 60, 0.12);
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark .glass-card {
+    background: rgba(15, 23, 42, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 16px 45px 0 rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 .text-gradient {
@@ -500,6 +507,27 @@ a {
     border-style: solid;
     border-color: #fed9b7 transparent transparent transparent;
     z-index: -1;
+}
+
+.dark .bubble {
+    background: #1e293b;
+    color: #f8fafc;
+    border-color: rgba(245, 158, 11, 0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+}
+
+.dark .bubble::after {
+    border-color: #1e293b transparent transparent transparent;
+}
+
+.dark .bubble::before {
+    border-color: rgba(245, 158, 11, 0.5) transparent transparent transparent;
+}
+
+.dark .toast {
+    background: #1e293b;
+    color: #f8fafc;
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
 }
 
 @keyframes pop_in {
